@@ -1,5 +1,18 @@
 <?php
 
+/*
+* GF_Label_Mapper
+*
+* Copyright (c) 2018 Mad Genius Inc (https://madg.com)
+*
+* By Blake Watson (@blakewatson)
+* Licensed under the MIT license.
+*
+* @link https://github.com/Mad-Genius/GF_Label_Mapper
+* @author Blake Watson
+* @version 1.0
+*/
+
 class GF_Label_Mapper {
 
     public $request;
