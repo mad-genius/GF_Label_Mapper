@@ -32,6 +32,30 @@ $_REQUEST['input_14'];
 
 Now it's no problem if your IDs get a little out of sync—so long as you keep your labels in sync.
 
+### `map` and `fields`
+
+GF_Label_Mapper provides two arrays. The `fields` array contains labels mapped to posted values:
+
+```
+Array
+(
+    [name] => Gus Maiden
+)
+```
+
+For the `fields` array to be available, you must provide both the `$_REQUEST` (or `$_POST`) array and the Form object.
+
+The `map` array, on the other hand, is made available by passing in, at minimum, the Form object. It provides a map of field labels to IDs:
+
+```
+Array
+(
+    [name] => input_1
+)
+```
+
+This is useful in cases where you need to reference a field by ID.
+
 ### IDs for front-end code
 
 If your code is primarily JavaScript, you can keep from using IDs in your selectors by getting a map from GF_Label_Mapper. By passing `true` as the third parameter, the mapper creates a JavaScript optimized map.
