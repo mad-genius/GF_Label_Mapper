@@ -7,7 +7,7 @@ class GF_Label_Mapper {
     public $map;
     public $fields;
 
-    function __construct( $request, $form, $for_js = false ) {
+    function __construct( $form, $request = null, $for_js = false ) {
         $this->request = $request;
         $this->form = $form;
         $this->fields = array();
