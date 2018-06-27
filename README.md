@@ -32,6 +32,14 @@ $_REQUEST['input_14'];
 
 Now it's no problem if your IDs get a little out of sync—so long as you keep your labels in sync.
 
+### Parameters
+
+**`$form`** (required) - Gravity Forms [Form Object](https://docs.gravityforms.com/form-object/)
+
+**`$request`** (optional) - the `$_REQUEST`, `$_POST`, or `$_GET` array containing the form-submitted values. Default: `NULL`.
+
+**`$for_js`** (optional) - `bool` flag indicating whether the map should be optimized for JavaScript usage. Default: `false`.
+
 ### `map` and `fields`
 
 GF_Label_Mapper provides two arrays. The `fields` array contains labels mapped to posted values:
@@ -41,6 +49,12 @@ Array
 (
     [name] => Gus Maiden
 )
+```
+
+Which you can access like:
+
+```
+$mapper->fields['name']; // Gus Maiden
 ```
 
 For the `fields` array to be available, you must provide both the `$_REQUEST` (or `$_POST`) array and the Form object.
@@ -54,11 +68,23 @@ Array
 )
 ```
 
+Which you can access like:
+
+```
+$mapper->map['name']; // input_1
+```
+
 This is useful in cases where you need to reference a field by ID.
 
 ### IDs for front-end code
 
 If your code is primarily JavaScript, you can keep from using IDs in your selectors by getting a map from GF_Label_Mapper. By passing `true` as the third parameter, the mapper creates a JavaScript optimized map.
+
+```
+$mapper = new GF_Label_Mapper( $form, null, true );
+
+$mapper->map['name']; // #input_3_1 (form 3, input 1)
+```
 
 A good method for implementing this is `wp_localize_script`. So for example, you would add something like this to `functions.php`:
 
