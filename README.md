@@ -12,10 +12,10 @@ GF_Label_Mapper maps your field labels to their IDs. Since labels are more easil
 
 ## Usage
 
-Provide the `$_REQUEST` variable and the Form object.
+Provide the Form object and the `$_REQUEST` array.
 
 ```php
-$mapper = new GF_Label_Mapper( $_REQUEST, $form );
+$mapper = new GF_Label_Mapper( $form, $_REQUEST );
 ```
 
 You can now access posted values like this:
@@ -83,7 +83,7 @@ function get_input_map( $form_name ) {
 	foreach( $forms as $form ) {
 		if( strtolower( $form['title'] ) !== strtolower( $form_name ) ) continue;
 
-		$mapper = new GF_Label_Mapper( null, $form, true );
+		$mapper = new GF_Label_Mapper( $form, null, true );
 		return $mapper->map;
 	}
 }
