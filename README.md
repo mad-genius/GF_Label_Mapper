@@ -14,19 +14,19 @@ GF_Label_Mapper maps your field labels to their IDs. Since labels are more easil
 
 Provide the `$_REQUEST` variable and the Form object.
 
-```
+```php
 $mapper = new GF_Label_Mapper( $_REQUEST, $form );
 ```
 
-You can no access posted values like this:
+You can now access posted values like this:
 
-```
+```php
 $mapper->fields['my nice input'];
 ```
 
 This is equivalent to:
 
-```
+```php
 $_REQUEST['input_14'];
 ```
 
@@ -38,7 +38,7 @@ If your code is primarily JavaScript, you can keep from using IDs in your select
 
 A good method for implementing this is `wp_localize_script`. So for example, you would add something like this to `functions.php`:
 
-```
+```php
 /**
  * Put this in your wp_enqueue_scripts action
  */
@@ -49,7 +49,7 @@ wp_localize_script( 'my-script', 'utilities', array(
 
 Then later:
 
-```
+```php
 /**
  * Lookup form inputs based on labels
  */
@@ -67,13 +67,13 @@ function get_input_map( $form_name ) {
 
 Now your JavaScript has access to the map:
 
-```
+```js
 utilities.input_map['my nice input'];
 ```
 
 As a bonus, you could do something like this (assuming you're using jQuery):
 
-```
+```js
 /**
  * Reads the GF input map and returns appropriate jQuery object.
  */
@@ -84,6 +84,6 @@ function $input(key) {
 
 Now you can select inputs like so:
 
-```
+```js
 $input('my nice input');
 ```
